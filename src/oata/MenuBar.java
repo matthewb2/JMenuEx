@@ -51,42 +51,60 @@ MouseListener, MouseMotionListener, MouseWheelListener,
 KeyListener, ListSelectionListener  {
  
 	private JFrame frame;  
-    private JMenuItem   open, exit, about, random, deletefile, resize, save, saveas;
+    private JMenuItem   open, exit, close, about, random, deletefile, resize, save, saveas;
     private JMenuItem   fullscreen, delete, previous, next;
     private JFileChooser fc;
     private JLabel jl;
     private JLabel fjl;
     
-  public JMenuBarEx() {
+  /**
+ * 
+ */
+/**
+ * 
+ */
+public JMenuBarEx() {
 	   setTitle("Default Menu Application");
        
-       //setLayout(new BorderLayout());
-     
-       
        // size of frame
-       setSize(600,550);
+       setSize(850,600);
         
        setVisible(true);
        
        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        
        JMenuBar menuBar = new JMenuBar();
+       
        JMenu menu1    = new JMenu("File");
        menu1.setMnemonic('F');
        
        ImageIcon icon_open = new ImageIcon(getClass().getResource("res/folder.png"));
-       open     = new JMenuItem("Open Folder", icon_open);
+       open     = new JMenuItem("Open", icon_open);
 
        menu1.add(open);
+     
+       ImageIcon icon_close = new ImageIcon(getClass().getResource("res/close.png"));
+       close     = new JMenuItem("Close", icon_close);
+       //close     = new JMenuItem("Close");
+       close.setMnemonic('C');
+       close.addActionListener(new ActionListener() {
+           public void actionPerformed(ActionEvent ev) {
+                   System.exit(0);
+           }
+       });
+ 	      
+ 	      
+       menu1.add(close);
+       
+      
+
        menuBar.add(menu1);
              
-      	
+    
        
        JMenu menu2    = new JMenu("Edit");
-       
+                
            
-       
-       menuBar.add(menu2);
        menu2.setMnemonic('E');
        
        deletefile     = new JMenuItem("Delete File");
@@ -94,6 +112,7 @@ KeyListener, ListSelectionListener  {
        
        resize     = new JMenuItem("Resize");
        menu2.add(resize);
+       menuBar.add(menu2);
        
       
        JMenu menu3    = new JMenu("View");
@@ -112,8 +131,8 @@ KeyListener, ListSelectionListener  {
        
        setJMenuBar(menuBar);	    
 		
-		this.addKeyListener(this);
-		 //String[] fruits= {};
+	
+		
     }
 
 @Override

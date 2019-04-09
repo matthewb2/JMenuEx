@@ -18,7 +18,7 @@
         <mkdir dir="build/jar"/>
         <jar destfile="build/jar/JMenuBar.jar" basedir="build/classes">
             <manifest>
-                <attribute name="Main-Class" value="oata.JMenuBar"/>
+                <attribute name="Main-Class" value="oata.MenuBar"/>
             </manifest>
         </jar>
     </target>
